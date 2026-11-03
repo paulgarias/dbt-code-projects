@@ -20,8 +20,11 @@ INSERT_DTS
 FROM {{source('product','PRODUCT_CP')}}
  
 {% if is_incremental() %}
-WHERE INSERT_DTS > (SELECT MAX(INSERT_DTS) FROM {{this}})
-{% endif %}
+WHERE INSERT_DTS > (
+    SELECT COALESCE(MAX(INSERT_DTS), '1900-01-01'::TIMESTAMP_NTZ)
+    FROM {{ this }}
+)
+{% endif%}
 )
 SELECT
 CAST(PRODUCT_ID AS INT) AS PRODUCT_ID,
