@@ -10,8 +10,6 @@ schema = "RAW"
 )
 }}
 
- 
-
 WITH product_cp AS
 (
 SELECT 
