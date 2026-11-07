@@ -1,35 +1,38 @@
-version: 2
-
 models:
   - name: employee
     description: "Employee DBT model"
-    columns: 
-    - name: emp_id
-      data_tests:
-        - unique
-        - not_null
-        - accepted_values:
-            arguments: 
-              values: ['1','2','3','4','5']
-              config: 
-                severity: warn 
-    - name: emp_salary
-      data_tests:
-        - salary_check
+    columns:
+      - name: emp_id
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['1','2','3','4','5']
+                config:
+                  severity: warn
+      - name: emp_salary
+        data_tests:
+          - salary_check
   - name: customer
-    description: "DBT Model for the customer table"
+    description: "DBT Model for the customer table"  
   - name: customer_vw
     description: "DBT Model for the customer view"
-
+  - name: sales
+    description: "DBT model for the sales table"    
 sources:
   - name: employee
     database: DBT_DEMO_DB
     schema: PUBLIC
     tables:
       - name: EMPLOYEE_RAW
-  
   - name: customer
     database: DBT_DEMO_DB
     schema: PUBLIC
     tables:
       - name: CUSTOMER_SRC
+  - name: sales
+    database: DBT_DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: SALES_SRC
