@@ -19,7 +19,15 @@ models:
   - name: customer_vw
     description: "DBT Model for the customer view"
   - name: sales
-    description: "DBT model for the sales table"    
+    description: "DBT model for the sales table"
+  - name: product
+    description: "DBT Model for the product table"
+  - name: purchase
+    description: "DBT model for the purchase table" 
+  - name: clean_orders
+    description: "DBT ephermeral model for the clean order"  
+  - name: final_orders
+    description: "DBT model for the finale orders model"   
 sources:
   - name: employee
     database: DBT_DEMO_DB
@@ -36,3 +44,19 @@ sources:
     schema: PUBLIC
     tables:
       - name: SALES_SRC
+  - name: product
+    database: DBT_DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: PRODUCT_SRC
+  - name: purchase
+    database: DBT_DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: PURCHASE_SRC
+  - name: orders
+    database: DBT_DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: BASE_ORDERS
+
