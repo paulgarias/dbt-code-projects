@@ -5,7 +5,6 @@
     )
 }}
 
-
 with base_orders as
 (
     select
